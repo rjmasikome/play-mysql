@@ -36,7 +36,7 @@ curl http://localhost:9000/users
 ```
 curl -X PUT  http://localhost:9000/users/1   \
     -H 'Content-Type: application/json'     \
-    -d '{"firstName":"John", "lastName":"Doe", "mobile": 123456788, "email": "jdoe@mail.co"}'
+    -d '{"firstName":"James", "lastName":"Doe", "mobile": 123456788, "email": "jdoe@mail.co"}'
 ```
 ### DELETE
 ```
