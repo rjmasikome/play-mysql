@@ -3,8 +3,9 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.ApplicationController.listUsers
-GET     /users                      controllers.ApplicationController.listUsers
+GET     /                           controllers.ApplicationController.getAllUsers
+GET     /users                      controllers.ApplicationController.getAllUsers
+GET     /users/:id                  controllers.ApplicationController.getUser(id : Long)
 POST    /users                      controllers.ApplicationController.addUser
 PUT     /users/:id                  controllers.ApplicationController.updateUser(id : Long)
 DELETE  /users/:id                  controllers.ApplicationController.deleteUser(id : Long)

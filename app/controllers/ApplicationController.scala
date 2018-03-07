@@ -11,7 +11,6 @@ import scala.concurrent.ExecutionContext.Implicits.global
 
 @Singleton
 class ApplicationController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
-//class ApplicationController extends Controller {
 
   def addUser() = Action.async(parse.json) { implicit request =>
 
@@ -69,7 +68,7 @@ class ApplicationController @Inject()(cc: ControllerComponents) extends Abstract
 
 
   def deleteUser(id: Long) = Action.async { implicit request =>
-    UserService.deleteUser(id) map { res =>
+    UserService.deleteUser(id).map { res =>
       Ok(
           Json.obj(
           "status" ->"OK",
@@ -79,8 +78,32 @@ class ApplicationController @Inject()(cc: ControllerComponents) extends Abstract
     }
   }
 
-  def listUsers() = Action.async { implicit request =>
-    UserService.listAllUsers map { users =>
+  def getUser(id: Long) = Action.async { implicit request =>
+    UserService.getUser(id)
+    .map { user =>
+      if (user == None) {
+          BadRequest(
+            Json.obj(
+              "status" ->"Error", 
+              "message" -> ("User " + id.toString + " can't be found")
+            )
+          )
+      } else {
+        Ok(
+          Json.obj(
+            "id" -> user.get.id,
+            "firstName" -> user.get.firstName,
+            "lastName" -> user.get.lastName,
+            "mobile" -> user.get.mobile,
+            "email" -> user.get.email
+          )
+        )
+      }
+    } 
+  }
+
+  def getAllUsers() = Action.async { implicit request =>
+    UserService.listAllUsers.map { users =>
       Ok(Json.obj(
         "users" -> users.map { user =>
           Json.obj(

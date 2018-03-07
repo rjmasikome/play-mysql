@@ -45,3 +45,11 @@ curl -X PUT  http://localhost:9000/users/1   \
 ```
 curl -X DELETE http://localhost:9000/users/1
 ```
+
+## Todo
+- [x] Create
+- [x] Read
+- [x] Update
+- [x] Delete
+- [ ] Better use of `Option`
+- [ ] Better Error Handling
