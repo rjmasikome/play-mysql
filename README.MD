@@ -2,7 +2,10 @@
 
 This is a experiment project to work with scala, play, slick, and mysql. The purpose of this is only for education.
 It will create a table called user, and it will contain `first_name` (`String`), `last_name`(`String`), `mobile` (`Long`), `email`(`String`).
+
 This project is to get first overview on JSON-Based REST CRUD Service.
+
+Based on and reusing many codes from tutorial: http://pedrorijo.com/blog/play-slick/
 
 ## Requirement
 1. Make sure MySQL is installed locally
@@ -36,7 +39,7 @@ curl http://localhost:9000/users
 ```
 curl -X PUT  http://localhost:9000/users/1   \
     -H 'Content-Type: application/json'     \
-    -d '{"firstName":"John", "lastName":"Doe", "mobile": 123456788, "email": "jdoe@mail.co"}'
+    -d '{"firstName":"James", "lastName":"Doe", "mobile": 123456788, "email": "jdoe@mail.co"}'
 ```
 ### DELETE
 ```
